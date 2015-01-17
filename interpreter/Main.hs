@@ -6,14 +6,12 @@ import System.Environment
 import System.IO
 import Data.List
 
-import Language.BrainFuck.Compile
 import Language.BrainFuck.Parse
 import Language.BrainFuck.Interpret
 
 main = do
-  (inHdl, outHdl) <- getHandles
-  cProgram <- liftM (compile . parse) (hGetContents inHdl)
-  hPutStr outHdl cProgram
+  (inHdl, _) <- getHandles
+  interpret . parse =<< hGetContents inHdl
 
 
 getHandles :: IO (Handle, Handle)

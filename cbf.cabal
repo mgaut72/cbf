@@ -19,14 +19,21 @@ library
   exposed-modules: Language.BrainFuck.Compile
                  , Language.BrainFuck.Parse
                  , Language.BrainFuck.AST
+                 , Language.BrainFuck.Interpret
   -- other-modules:       
   -- other-extensions:    
-  build-depends:       base >=4.6 && <4.7, lens >=4.4 && <4.5
+  build-depends:       base >=4.6 && <4.7, lens >=4.4 && <4.5, bytestring
   hs-source-dirs:      src
   default-language:    Haskell2010
 
 executable compile
   hs-source-dirs: compiler
+  main-is:        Main.hs
+  build-depends:
+    base >= 4.0 && <5.0, cbf
+
+executable interpret
+  hs-source-dirs: interpreter
   main-is:        Main.hs
   build-depends:
     base >= 4.0 && <5.0, cbf
