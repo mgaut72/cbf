@@ -11,6 +11,8 @@ type Tape = Zipper Word8
 
 type Zipper a = ([a], [a])
 
+emptyTape = (repeat 0, [])
+
 forward :: Zipper a -> Zipper a
 forward (x:xs, ys) = (xs, x:ys)
 
@@ -26,7 +28,7 @@ peek (x:xs, _) = x
 effect f a = f a >> return a
 
 interpret :: [Cmd] -> IO Tape
-interpret cs = interpret' (cs, (repeat 0, []))
+interpret cs = interpret' (cs, emptyTape)
 
 interpret' :: ([Cmd], Tape) -> IO Tape
 interpret' ([], t) = return t
