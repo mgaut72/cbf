@@ -1,3 +1,4 @@
+# standard github haskell ingores
 dist
 cabal-dev
 *.o
@@ -15,3 +16,6 @@ cabal.config
 *.prof
 *.aux
 *.hp
+
+# ignore compiler output
+*.c
